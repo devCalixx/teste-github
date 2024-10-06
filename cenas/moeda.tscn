@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmh8vmxnqtfjk"]
+
+[ext_resource type="Texture2D" uid="uid://b7sb4cacah7e0" path="res://assets/tileset/personagem.png" id="1_tmvsi"]
+[ext_resource type="Script" path="res://script/animated_sprite_2d.gd" id="2_q5rjx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_artvy"]
+atlas = ExtResource("1_tmvsi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj4ef"]
+atlas = ExtResource("1_tmvsi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brtdv"]
+atlas = ExtResource("1_tmvsi")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vpba"]
+atlas = ExtResource("1_tmvsi")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kw3lp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj4ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_brtdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vpba")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0uuai"]
+radius = 7.0
+
+[node name="moeda" type="Area2D"]
+collision_mask = 16
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 1)
+scale = Vector2(1.5625, 1.5625)
+sprite_frames = SubResource("SpriteFrames_kw3lp")
+autoplay = "default"
+script = ExtResource("2_q5rjx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_0uuai")
+
+[connection signal="body_entered" from="." to="AnimatedSprite2D" method="_on_moeda_body_entered"]
