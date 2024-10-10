@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://buskjfc3rp1h6"]
+[gd_scene load_steps=18 format=3 uid="uid://buskjfc3rp1h6"]
 
 [ext_resource type="PackedScene" uid="uid://dnbcuaxrgvykh" path="res://cenas/personagem.tscn" id="1_3pnho"]
 [ext_resource type="Texture2D" uid="uid://dvxgxrguwy5p7" path="res://assets/tileset/tilesheet-oficial2.png" id="3_7x53f"]
 [ext_resource type="Texture2D" uid="uid://dkvpo0kpnegwq" path="res://assets/tileset/escada.png" id="4_tpakj"]
 [ext_resource type="Texture2D" uid="uid://cvvqvnhw8ko3l" path="res://assets/tileset/trem(3).png" id="5_8boby"]
+[ext_resource type="Texture2D" uid="uid://cxvhhyj0f7qmd" path="res://assets/tileset/bloco.png" id="5_jhyr1"]
 [ext_resource type="Script" path="res://script/game_manager.gd" id="6_8ta51"]
 [ext_resource type="PackedScene" uid="uid://drnpx56mx017a" path="res://cenas/elevador.tscn" id="6_oogv3"]
 
@@ -83,15 +84,59 @@ texture = ExtResource("4_tpakj")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-23.6881, -15.3796, -13.7886, -15.026, 24.7487, 4.06586, 24.0416, 16.0867, 9.89949, 16.4402, -24.3952, 0.176777)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwk5k"]
+texture = ExtResource("5_jhyr1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.617, -16.0867, 16.2635, -16.0867, 15.9099, 16.0867, -15.9099, 15.7331)
+
 [sub_resource type="TileSet" id="TileSet_mtgmn"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ytwyx")
 sources/1 = SubResource("TileSetScenesCollectionSource_1sq5p")
 sources/2 = SubResource("TileSetAtlasSource_2mi0g")
 sources/4 = SubResource("TileSetAtlasSource_hftel")
+sources/6 = SubResource("TileSetAtlasSource_bwk5k")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh4ps"]
 distance = -200.0
+
+[sub_resource type="Animation" id="Animation_j2jec"]
+resource_name = "elevador-sobe-desce"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(156, -143), Vector2(156, 66)]
+}
+
+[sub_resource type="Animation" id="Animation_tf8t6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(156, -143)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2a2y"]
+_data = {
+"RESET": SubResource("Animation_tf8t6"),
+"elevador-sobe-desce": SubResource("Animation_j2jec")
+}
 
 [node name="jogo" type="Node2D"]
 
@@ -130,4 +175,10 @@ texture = ExtResource("5_8boby")
 shape = SubResource("WorldBoundaryShape2D_dh4ps")
 
 [node name="elevador" parent="." instance=ExtResource("6_oogv3")]
-position = Vector2(158, -144)
+position = Vector2(156, -143)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="elevador"]
+libraries = {
+"": SubResource("AnimationLibrary_s2a2y")
+}
+autoplay = "elevador-sobe-desce"

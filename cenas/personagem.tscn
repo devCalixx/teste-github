@@ -22,6 +22,7 @@ animations = [{
 radius = 10.0499
 
 [node name="personagem" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_3tj03")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
