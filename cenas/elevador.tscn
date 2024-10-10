@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://drnpx56mx017a"]
+
+[ext_resource type="Texture2D" uid="uid://bqyncvi7v7ewq" path="res://assets/tileset/elevador.png" id="1_jc4fi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3irx"]
+size = Vector2(45.25, 19.5)
+
+[node name="elevador" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(35.5, 32.5)
+scale = Vector2(0.0595703, 0.0595703)
+texture = ExtResource("1_jc4fi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(35.375, 53.25)
+shape = SubResource("RectangleShape2D_g3irx")
