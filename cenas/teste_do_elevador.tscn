@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://df7nc4rm34rjc"]
+
+[ext_resource type="PackedScene" uid="uid://drnpx56mx017a" path="res://cenas/elevador.tscn" id="1_2q2wl"]
+
+[node name="teste-do-elevador" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="elevador" parent="." instance=ExtResource("1_2q2wl")]
+position = Vector2(223, -143)

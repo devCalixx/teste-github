@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://buskjfc3rp1h6"]
+[gd_scene load_steps=15 format=3 uid="uid://buskjfc3rp1h6"]
 
 [ext_resource type="PackedScene" uid="uid://dnbcuaxrgvykh" path="res://cenas/personagem.tscn" id="1_3pnho"]
 [ext_resource type="Texture2D" uid="uid://dvxgxrguwy5p7" path="res://assets/tileset/tilesheet-oficial2.png" id="3_7x53f"]
@@ -101,44 +101,6 @@ sources/6 = SubResource("TileSetAtlasSource_bwk5k")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dh4ps"]
 distance = -200.0
 
-[sub_resource type="Animation" id="Animation_qd3nl"]
-resource_name = "elevador"
-length = 2.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(156, -143), Vector2(156, 67)]
-}
-
-[sub_resource type="Animation" id="Animation_eholr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(156, -143)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nnsto"]
-_data = {
-"RESET": SubResource("Animation_eholr"),
-"elevador": SubResource("Animation_qd3nl")
-}
-
 [node name="jogo" type="Node2D"]
 
 [node name="personagem" parent="." instance=ExtResource("1_3pnho")]
@@ -177,9 +139,3 @@ shape = SubResource("WorldBoundaryShape2D_dh4ps")
 
 [node name="elevador" parent="." instance=ExtResource("6_oogv3")]
 position = Vector2(156, -143)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="elevador"]
-libraries = {
-"": SubResource("AnimationLibrary_nnsto")
-}
-autoplay = "elevador"
