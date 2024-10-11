@@ -79,7 +79,6 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-113.844, -80.2566, -101.823, -78.8424, -7.07107, -32.8805, -7.07107, -19.4454, -9.19239, -13.7886, -113.137, -64.7003)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hftel"]
-texture = ExtResource("4_tpakj")
 0:0/size_in_atlas = Vector2i(3, 2)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-23.6881, -15.3796, -13.7886, -15.026, 24.7487, 4.06586, 24.0416, 16.0867, 9.89949, 16.4402, -24.3952, 0.176777)

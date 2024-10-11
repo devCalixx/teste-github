@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://dnbcuaxrgvykh"]
+
+[ext_resource type="Script" path="res://script/personagem.gd" id="1_3tj03"]
+[ext_resource type="Texture2D" uid="uid://b7sb4cacah7e0" path="res://assets/tileset/personagem.png" id="1_g5oma"]
+[ext_resource type="Texture2D" uid="uid://dfo70pb4tq70i" path="res://assets/tileset/molde-ideal.png" id="2_83hca"]
+[ext_resource type="Texture2D" uid="uid://bnyk0ppoabyqy" path="res://assets/tileset/molde-ideal(2).png" id="3_psydq"]
+[ext_resource type="Texture2D" uid="uid://bp8lvlxw1pvja" path="res://assets/tileset/molde-ideal(5).png" id="4_nh00h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inwys"]
+atlas = ExtResource("1_g5oma")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5v138"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_83hca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_psydq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_83hca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nh00h")
+}],
+"loop": true,
+"name": &"andar-horizontal",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"andar-vertical",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"levantar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inwys")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"sentar",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l45ob"]
+radius = 10.0499
+
+[node name="personagem" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_3tj03")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -1)
+scale = Vector2(1.65625, 1.65625)
+sprite_frames = SubResource("SpriteFrames_5v138")
+animation = &"andar-horizontal"
+frame_progress = 0.281959
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 5
+position = Vector2(-2, 7)
+shape = SubResource("CircleShape2D_l45ob")

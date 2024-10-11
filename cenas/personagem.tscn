@@ -1,20 +1,88 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnbcuaxrgvykh"]
+[gd_scene load_steps=14 format=3 uid="uid://dnbcuaxrgvykh"]
 
 [ext_resource type="Script" path="res://script/personagem.gd" id="1_3tj03"]
-[ext_resource type="Texture2D" uid="uid://b7sb4cacah7e0" path="res://assets/tileset/personagem.png" id="1_g5oma"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_inwys"]
-atlas = ExtResource("1_g5oma")
-region = Rect2(64, 64, 32, 32)
+[ext_resource type="Texture2D" uid="uid://dfo70pb4tq70i" path="res://assets/tileset/molde-ideal.png" id="2_83hca"]
+[ext_resource type="Texture2D" uid="uid://gmqgns3mrc6w" path="res://assets/tileset/molde-ideal_(5).png" id="2_kbqa3"]
+[ext_resource type="Texture2D" uid="uid://bnyk0ppoabyqy" path="res://assets/tileset/molde-ideal(2).png" id="3_psydq"]
+[ext_resource type="Texture2D" uid="uid://c7xghsxqejj2k" path="res://assets/tileset/molde-ideal_(6).png" id="3_wm4su"]
+[ext_resource type="Texture2D" uid="uid://bp8lvlxw1pvja" path="res://assets/tileset/molde-ideal(5).png" id="4_nh00h"]
+[ext_resource type="Texture2D" uid="uid://dc1u7mno40i2v" path="res://assets/tileset/molde-ideal(6).png" id="4_yf6ou"]
+[ext_resource type="Texture2D" uid="uid://dwlce6hfgaevn" path="res://assets/tileset/molde-ideal_(4).png" id="5_f2wrw"]
+[ext_resource type="Texture2D" uid="uid://pb3t6rry5pp7" path="res://assets/tileset/molde-ideal(7).png" id="5_ncywg"]
+[ext_resource type="Texture2D" uid="uid://crv71612dptx3" path="res://assets/tileset/sentado (2).png" id="10_qwwsn"]
+[ext_resource type="Texture2D" uid="uid://kmf2i0thrb46" path="res://assets/tileset/sentado-lado (2).png" id="11_dcun5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5v138"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_inwys")
+"texture": ExtResource("2_kbqa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wm4su")
 }],
 "loop": true,
-"name": &"default",
+"name": &"andar-baixo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_yf6ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ncywg")
+}],
+"loop": true,
+"name": &"andar-cima",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_83hca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_psydq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_83hca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nh00h")
+}],
+"loop": true,
+"name": &"andar-horizontal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_f2wrw")
+}],
+"loop": true,
+"name": &"levantar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_f2wrw")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_qwwsn")
+}],
+"loop": true,
+"name": &"sentar-frente",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_dcun5")
+}],
+"loop": true,
+"name": &"sentar-lado",
 "speed": 5.0
 }]
 
@@ -29,7 +97,7 @@ script = ExtResource("1_3tj03")
 position = Vector2(-1, -1)
 scale = Vector2(1.65625, 1.65625)
 sprite_frames = SubResource("SpriteFrames_5v138")
-frame_progress = 0.760187
+animation = &"sentar-lado"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
